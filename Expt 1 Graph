@@ -65,7 +65,7 @@ slope, intercept, r_value, p_value, std_err = stats.linregress(xvalues, yvalues)
 # #### Plot graph
 
 # Create scatterplot and reduce width and size of markers
-#plt.scatter(xvalues, yvalues, marker='x', linewidth=0.2, s = 15)
+plt.scatter(xvalues, yvalues, marker='s',  linewidth=0.2, s = 15, facecolors='none', edgecolors='b')
 
 # Create limits for plot
 plt.xlim(xmin, xmax)
@@ -81,7 +81,7 @@ plt.grid(b=True, which='major', linewidth = 0.1, color='k', linestyle='-')
 
 # Show the minor grid lines with very faint black lines
 plt.minorticks_on()
-plt.grid(b=True, which='minor', linewidth = 0.1, color='k', linestyle='-' , alpha=0.2)
+plt.grid(b=True, which='minor', linewidth = 0.1, color='k', linestyle='-' , alpha=0.5)
 
 # Change number of minor gridlines    
 ax = plt.gca()  
@@ -93,17 +93,17 @@ ax.xaxis.set_major_locator(MaxNLocator())
 ax.yaxis.set_major_locator(MaxNLocator())
 
 # plot error bars
-plt.errorbar(xvalues, yvalues, yerr=ey, xerr=ex, fmt=',',elinewidth = 0.2, capsize=2, capthick=0.2)
+plt.errorbar(xvalues, yvalues, yerr=ey, xerr=ex, fmt='none', elinewidth = 0.1, capsize=0.1, capthick=0.1)
 
 # Plot line of best fit using gradient and intecept from OLS regression
 x = np.linspace(xmin, xmax, 2)
-plt.plot(x, x*slope + intercept, linewidth=0.3, alpha=0.5, color = 'r')
+plt.plot(x, x*slope + intercept, linewidth=0.2, alpha=0.5, color = 'r')
 
 # Tidy up layout
 plt.tight_layout()
 
 # Export as .png, to speed up edits reduce dpi to 200
-plt.savefig('physics_graph.png', dpi=600)
+plt.savefig('physics_graph.png', dpi=1500)
 
 # #### Main results of OLS fit
 
